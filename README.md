@@ -8,7 +8,7 @@ When the application starts, it automatically loads the JSON data into the datab
 
 # Submitted By
 
-- Harirajan S
+- HARIRAJAN S
 - Register No: 111723203033
 - Department: Information Technology
 - RMK Engineering College
