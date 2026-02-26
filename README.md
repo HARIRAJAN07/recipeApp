@@ -17,30 +17,33 @@ When the application starts, it automatically loads the JSON data into the datab
 
 ## Steps to Run the Application
 
-**1. Install PostgreSQL** and update your database credentials in `src/main/resources/application.properties`.
+**1. Clone the repository:**
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
 
-**2. Create a database** named `recipe` in PostgreSQL:
+**2. Install PostgreSQL** and open `src/main/resources/application.properties` to add your database username and password.
 
+**3. Create a database** named `recipe` in PostgreSQL:
 ```sql
 CREATE DATABASE recipe;
 ```
 
-**3. Run the application** from the project root:
-
+**4. Run the application** from the project root:
 ```bash
 mvnw.cmd spring-boot:run
 ```
 
-**4.** The application will start at `http://localhost:8080`
+**5.** The application will start at `http://localhost:8080`
 
-> The JSON file is parsed and loaded into the database automatically on startup.
+> The JSON file is loaded into the database automatically when the app starts.
 
 ---
 
 ## Database Schema
 
 The following table is used to store recipe data:
-
 ```sql
 CREATE TABLE recipe (
     id          BIGSERIAL PRIMARY KEY,
@@ -67,7 +70,6 @@ You can test the endpoints using [Postman](https://www.postman.com/). There are 
 ---
 
 ### 1. GET – Top Rated Recipes
-
 ```
 GET http://localhost:8080/recipes/top?limit=5
 ```
@@ -75,13 +77,11 @@ GET http://localhost:8080/recipes/top?limit=5
 Returns the top-rated recipes sorted by rating in descending order. The `limit` parameter controls how many results come back — default is 5.
 
 **Example:**
-
 ```
 GET http://localhost:8080/recipes/top?limit=3
 ```
 
 **Success Response – 200 OK:**
-
 ```json
 [
   {
@@ -101,13 +101,11 @@ GET http://localhost:8080/recipes/top?limit=3
 ---
 
 ### 2. POST – Create a New Recipe
-
 ```
 POST http://localhost:8080/recipes
 ```
 
 Send a JSON body in this format:
-
 ```json
 {
   "title": "Dosa",
@@ -120,7 +118,6 @@ Send a JSON body in this format:
 ```
 
 **Success Response – 200 OK:**
-
 ```json
 {
   "id": 42,
@@ -138,7 +135,6 @@ Send a JSON body in this format:
 **Validation Error – 400 Bad Request:**
 
 If `title`, `cuisine`, `prep_time`, or `cook_time` is missing or empty, the API returns:
-
 ```json
 {
   "status": 400,
