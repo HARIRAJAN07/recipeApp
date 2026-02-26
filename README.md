@@ -6,12 +6,14 @@ When the application starts, it automatically loads the JSON data into the datab
 
 ---
 
-# Submitted By
+## Submitted By
 
-- HARIRAJAN S
-- Register No: 111723203033
-- Department: Information Technology
-- RMK Engineering College
+Name: HARIRAJAN S  
+Register No: 111723203033  
+Department: Information Technology  
+College: RMK Engineering College
+
+---
 
 ## Tech Stack
 
@@ -22,35 +24,33 @@ When the application starts, it automatically loads the JSON data into the datab
 
 ---
 
-## Steps to Run the Application
+## How to Run
 
-**1. Clone the repository:**
+**Step 1 – Clone the repository**
 ```bash
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 ```
 
-**2. Install PostgreSQL** and open `src/main/resources/application.properties` to add your database username and password.
+**Step 2 – Setup PostgreSQL**
 
-**3. Create a database** named `recipe` in PostgreSQL:
+Install PostgreSQL and open `src/main/resources/application.properties`, then update your database username and password.
+
+**Step 3 – Create the database**
 ```sql
 CREATE DATABASE recipe;
 ```
 
-**4. Run the application** from the project root:
+**Step 4 – Start the application**
 ```bash
 mvnw.cmd spring-boot:run
 ```
 
-**5.** The application will start at `http://localhost:8080`
-
-> The JSON file is loaded into the database automatically when the app starts.
+The app runs at `http://localhost:8080`. The JSON data loads into the database automatically on startup.
 
 ---
 
 ## Database Schema
-
-The following table is used to store recipe data:
 ```sql
 CREATE TABLE recipe (
     id          BIGSERIAL PRIMARY KEY,
@@ -66,29 +66,24 @@ CREATE TABLE recipe (
 );
 ```
 
-> `total_time` is calculated automatically as `prep_time + cook_time`.
+Note: `total_time` is automatically set as `prep_time + cook_time`.
 
 ---
 
-## API Testing
+## API Endpoints
 
-You can test the endpoints using [Postman](https://www.postman.com/). There are 2 endpoints.
+Use [Postman](https://www.postman.com/) to test the endpoints.
 
 ---
 
-### 1. GET – Top Rated Recipes
+### GET /recipes/top
+
+Fetches top-rated recipes sorted by rating. Default limit is 5.
 ```
 GET http://localhost:8080/recipes/top?limit=5
 ```
 
-Returns the top-rated recipes sorted by rating in descending order. The `limit` parameter controls how many results come back — default is 5.
-
-**Example:**
-```
-GET http://localhost:8080/recipes/top?limit=3
-```
-
-**Success Response – 200 OK:**
+Sample response:
 ```json
 [
   {
@@ -107,12 +102,14 @@ GET http://localhost:8080/recipes/top?limit=3
 
 ---
 
-### 2. POST – Create a New Recipe
+### POST /recipes
+
+Creates a new recipe. Send the data as a JSON body.
 ```
 POST http://localhost:8080/recipes
 ```
 
-Send a JSON body in this format:
+Request body:
 ```json
 {
   "title": "Dosa",
@@ -124,7 +121,7 @@ Send a JSON body in this format:
 }
 ```
 
-**Success Response – 200 OK:**
+On success:
 ```json
 {
   "id": 42,
@@ -139,9 +136,7 @@ Send a JSON body in this format:
 }
 ```
 
-**Validation Error – 400 Bad Request:**
-
-If `title`, `cuisine`, `prep_time`, or `cook_time` is missing or empty, the API returns:
+If `title`, `cuisine`, `prep_time`, or `cook_time` is missing, you will get a 400 error:
 ```json
 {
   "status": 400,
@@ -152,10 +147,10 @@ If `title`, `cuisine`, `prep_time`, or `cook_time` is missing or empty, the API 
 
 ---
 
-## What This Submission Includes
+## What's Included
 
-- Complete source code — Controller, Service, Repository, and Model
-- JSON parsing and automatic data loading on startup
-- PostgreSQL integration with the schema above
-- REST API with validation
-- Full instructions to run and test locally
+- Source code for Controller, Service, Repository and Model
+- JSON parsing and data loading on startup
+- PostgreSQL setup with schema
+- REST API with basic validation
+- Steps to run and test locally
