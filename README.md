@@ -28,8 +28,8 @@ College: RMK Engineering College
 
 **Step 1 – Clone the repository**
 ```bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/HARIRAJAN07/recipeApp.git)
-cd your-repo-name
+git clone [https://github.com/HARIRAJAN07/recipeApp.git]
+cd recipeApp
 ```
 
 **Step 2 – Setup PostgreSQL**
